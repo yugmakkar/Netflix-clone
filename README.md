@@ -1,5 +1,10 @@
 # Netflix Clone
 
+[![CI](https://github.com/yugmakkar/Netflix-clone/actions/workflows/ci.yml/badge.svg)](https://github.com/yugmakkar/Netflix-clone/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Vite](https://img.shields.io/badge/Vite-4-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+
 A two-part Netflix clone built with **vanilla JS + Vite + Tailwind CSS**:
 
 1. **Marketing site** — a pixel-faithful recreation of Netflix's public landing
@@ -51,7 +56,7 @@ The landing page's language switcher and the full Hindi flow
 | Catalog metadata, posters, backdrops | [TMDB](https://www.themoviedb.org/) API | Requires a free API key (below) |
 | Trailers / previews | YouTube (via the IFrame API, `youtube-nocookie`) | No studio content is hosted |
 | **Full-length films** | [Internet Archive](https://archive.org/) | Curated **public-domain** titles that play end-to-end |
-| Demo-mode poster art | [TVmaze](https://www.tvmaze.com/) & iTunes Search (both keyless) | Only used for the offline sample catalog when no TMDB key is set |
+| Demo-mode poster art | [TVmaze](https://www.tvmaze.com/) & [Wikipedia](https://www.wikipedia.org/) REST API (both keyless) | Only used for the offline sample catalog when no TMDB key is set |
 
 This project deliberately does **not** use pirate streaming embeds
 (vidsrc, 2embed, etc.). Those are copyright-infringing, serve malicious ads,
@@ -136,6 +141,13 @@ git-ignored.
 ## Tech stack
 Vanilla JavaScript (ES modules) · Vite 4 · Tailwind CSS 3 · TMDB API ·
 YouTube IFrame API · Internet Archive
+
+## Testing
+This project has no automated test suite; it's verified with a documented manual
+checklist. See [TESTING.md](./TESTING.md) for the full flow (landing → sign-in →
+profiles → browse → modal → player), the demo credentials, and the latest dated
+run. The CI workflow (`npm ci` + `npm run build` on Node 20) guards against build
+and dependency breakage on every push and pull request.
 
 ## Attribution
 This product uses the TMDB API but is **not endorsed or certified by TMDB**.
