@@ -173,7 +173,7 @@ export async function detail(type, id) {
     return {
       ...SAMPLE_DETAIL,
       ...found,
-      genres: SAMPLE_DETAIL.genres,
+      genres: [],
       runtime: null,
       seasons: [],
       cast: [],

@@ -32,8 +32,9 @@ export function cardHtml(item, { rank } = {}) {
 }
 
 function posterSrc(item) {
-  // Free films carry an absolute Archive thumbnail; TMDB items carry a path.
-  if (item.free && item.poster?.startsWith("http")) return item.poster;
+  // Absolute URLs (Archive thumbnails, baked-in sample posters) pass through;
+  // TMDB items carry a relative path that img() expands.
+  if (item.poster?.startsWith("http")) return item.poster;
   return img(item.poster, "w342");
 }
 

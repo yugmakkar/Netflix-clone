@@ -48,24 +48,48 @@ body.app {
 /* ---- Hero billboard ----------------------------------------------------- */
 .hero {
   position: relative;
-  min-height: 56vw;
+  min-height: 70vh;
   max-height: 85vh;
   display: flex;
-  align-items: flex-end;
-  padding: 0 4% 8vw;
+  align-items: center;
+  padding: 10vh 4% 8vw;
+  overflow: hidden;
+}
+/* Blurred, darkened full-bleed backdrop derived from the poster. */
+.hero-bg {
+  position: absolute;
+  inset: -40px;
   background-size: cover;
-  background-position: center top;
+  background-position: center;
+  filter: blur(28px) brightness(0.5);
+  transform: scale(1.1);
 }
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-      77deg,
-      rgba(0, 0, 0, 0.8) 0%,
-      transparent 60%
-    ),
-    linear-gradient(180deg, transparent 50%, var(--nf-dark) 98%);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, transparent 70%),
+    linear-gradient(180deg, transparent 55%, var(--nf-dark) 99%);
+}
+/* Crisp poster on the right (hidden on small screens). */
+.hero-poster {
+  position: absolute;
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  max-height: 460px;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  display: none;
+}
+@media (min-width: 768px) {
+  .hero-poster {
+    display: block;
+  }
 }
 .hero-content {
   position: relative;
@@ -99,24 +123,34 @@ body.app {
 
 .card {
   position: relative;
-  flex: 0 0 auto;
-  width: 44vw;
-  max-width: 260px;
-  aspect-ratio: 16 / 9;
+  width: 100%; /* fills a grid cell (search results, More Like This) */
+  aspect-ratio: 2 / 3; /* portrait poster art, like Netflix title boxart */
   border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
   background: #232323;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+/* Inside a horizontal row, cards are fixed-width flex items. */
+.row-scroller > .card,
+.top10-item {
+  flex: 0 0 auto;
+  width: 40vw;
+  max-width: 190px;
+}
+.top10-item .card {
+  width: 100%;
+}
 @media (min-width: 640px) {
-  .card {
-    width: 28vw;
+  .row-scroller > .card,
+  .top10-item {
+    width: 24vw;
   }
 }
 @media (min-width: 1024px) {
-  .card {
-    width: 16vw;
+  .row-scroller > .card,
+  .top10-item {
+    width: 15vw;
   }
 }
 .card img {

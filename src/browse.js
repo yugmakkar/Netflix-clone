@@ -151,8 +151,12 @@ function renderHero(item) {
 
   const hero = document.createElement("section");
   hero.className = "hero";
-  hero.style.backgroundImage = `url('${bg}')`;
+  // Blurred full-bleed backdrop (works with portrait posters) + a crisp poster
+  // card on the right, like a Netflix billboard.
   hero.innerHTML = `
+    <div class="hero-bg" style="background-image:url('${bg}')"></div>
+    <img class="hero-poster" src="${bg}" alt="${esc(item.title)}"
+         onerror="this.style.display='none'">
     <div class="hero-content">
       <h1 class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">${esc(item.title)}</h1>
       <p class="text-sm md:text-lg mb-5 line-clamp-3 drop-shadow">${esc(item.overview || "")}</p>

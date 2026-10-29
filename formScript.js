@@ -24,6 +24,17 @@ if (learnMore) {
 const emailEl = document.getElementById("email");
 const passEl = document.getElementById("pass");
 
+// Demo account autofill. Auth is simulated, so these just need to pass the
+// field validation below; the one-click button saves typing during a demo.
+const demoBtn = document.getElementById("demo-fill");
+if (demoBtn) {
+  demoBtn.addEventListener("click", () => {
+    emailEl.value = "demo@netflix.com";
+    passEl.value = "Netflix@123";
+    window.validation();
+  });
+}
+
 function flag(el, fieldId, message) {
   el.classList.add("border-b-[3px]", "border-[#e38400]");
   document.getElementById(fieldId).innerHTML = message;

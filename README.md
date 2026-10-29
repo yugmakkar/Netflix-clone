@@ -14,6 +14,19 @@ A two-part Netflix clone built with **vanilla JS + Vite + Tailwind CSS**:
 
 ---
 
+## Demo account
+
+The sign-in is **simulated** (there's no backend — any valid-looking email plus a
+4–60 character password gets you in, and only the email is stored, never the
+password). For a one-click demo, the sign-in page shows:
+
+| | |
+| --- | --- |
+| **Email** | `demo@netflix.com` |
+| **Password** | `Netflix@123` |
+
+Click **"Use demo account →"** on `forms.html` to fill and sign in instantly.
+
 ## Demo flow
 
 ```
@@ -38,6 +51,7 @@ The landing page's language switcher and the full Hindi flow
 | Catalog metadata, posters, backdrops | [TMDB](https://www.themoviedb.org/) API | Requires a free API key (below) |
 | Trailers / previews | YouTube (via the IFrame API, `youtube-nocookie`) | No studio content is hosted |
 | **Full-length films** | [Internet Archive](https://archive.org/) | Curated **public-domain** titles that play end-to-end |
+| Demo-mode poster art | [TVmaze](https://www.tvmaze.com/) & iTunes Search (both keyless) | Only used for the offline sample catalog when no TMDB key is set |
 
 This project deliberately does **not** use pirate streaming embeds
 (vidsrc, 2embed, etc.). Those are copyright-infringing, serve malicious ads,
