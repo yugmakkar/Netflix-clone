@@ -23,6 +23,21 @@ export function renderNav(active = "home") {
       ${link("mylist", "My List", active)}
     </div>
 
+    <!-- Mobile "Browse" dropdown -->
+    <div class="relative md:hidden" id="mobile-browse">
+      <button class="flex items-center gap-1 text-sm text-white" id="mobile-browse-btn">
+        Browse <span class="material-symbols-outlined text-base">arrow_drop_down</span>
+      </button>
+      <div class="absolute left-0 mt-2 w-44 bg-black/95 border border-white/10 rounded hidden" id="mobile-menu">
+        ${["home:Home", "tv:TV Shows", "movie:Movies", "new:New & Popular", "mylist:My List"]
+          .map((p) => {
+            const [k, lbl] = p.split(":");
+            return `<a href="browse.html#${k}" class="block px-4 py-2 text-sm hover:bg-white/10" data-nav="${k}">${lbl}</a>`;
+          })
+          .join("")}
+      </div>
+    </div>
+
     <div class="flex items-center gap-3" style="margin-left:auto">
       <div class="relative flex items-center">
         <span class="material-symbols-outlined cursor-pointer" id="search-icon">search</span>
@@ -70,6 +85,17 @@ function wire(nav) {
     signOut();
     location.href = "index.html";
   });
+
+  // Mobile Browse dropdown
+  const mMenu = nav.querySelector("#mobile-menu");
+  const mBtn = nav.querySelector("#mobile-browse-btn");
+  if (mBtn) {
+    mBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      mMenu.classList.toggle("hidden");
+    });
+    document.addEventListener("click", () => mMenu.classList.add("hidden"));
+  }
 
   // Expanding search box
   const icon = nav.querySelector("#search-icon");

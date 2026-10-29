@@ -8,7 +8,7 @@
 
 const ARCHIVE = "https://archive.org";
 
-const film = ({ id, archiveId, file, title, year, genre, overview }) => ({
+const film = ({ id, archiveId, file, title, year, genre, overview, poster }) => ({
   id,
   archiveId,
   type: "movie",
@@ -17,14 +17,17 @@ const film = ({ id, archiveId, file, title, year, genre, overview }) => ({
   year,
   genre,
   overview,
-  poster: `${ARCHIVE}/services/img/${archiveId}`,
-  backdrop: `${ARCHIVE}/services/img/${archiveId}`,
+  // Real Wikipedia poster; the Archive thumbnail is a frame grab, so prefer the
+  // poster and fall back to services/img only if none is given.
+  poster: poster || `${ARCHIVE}/services/img/${archiveId}`,
+  backdrop: poster || `${ARCHIVE}/services/img/${archiveId}`,
   videoUrl: `${ARCHIVE}/download/${archiveId}/${file}`,
 });
 
 export const FREE_FILMS = [
   film({
     id: "f-notld",
+    poster: "https://upload.wikimedia.org/wikipedia/en/9/91/Night_of_the_Living_Dead_%281968%29_poster.jpg",
     archiveId: "Night.Of.The.Living.Dead_1080p",
     file: "NightOfTheLivingDead.mp4",
     title: "Night of the Living Dead",
@@ -35,6 +38,7 @@ export const FREE_FILMS = [
   }),
   film({
     id: "f-hgf",
+    poster: "https://upload.wikimedia.org/wikipedia/commons/2/21/His_Girl_Friday_%281940_poster%29_crop.jpg",
     archiveId: "his_girl_friday",
     file: "his_girl_friday.mp4",
     title: "His Girl Friday",
@@ -45,6 +49,7 @@ export const FREE_FILMS = [
   }),
   film({
     id: "f-general",
+    poster: "https://upload.wikimedia.org/wikipedia/commons/0/0c/The_General_%281926%29_-_Movie_Poster_2.png",
     archiveId: "TheGeneral",
     file: "The_General_512kb.mp4",
     title: "The General",
@@ -55,6 +60,7 @@ export const FREE_FILMS = [
   }),
   film({
     id: "f-nosferatu",
+    poster: "https://upload.wikimedia.org/wikipedia/en/9/90/Nosferatu_poster_%28Albin_Grau%2C_1922%29_1.jpg",
     archiveId: "nosferatu_1922",
     file: "nosferatu_1922.mp4",
     title: "Nosferatu",
@@ -65,6 +71,7 @@ export const FREE_FILMS = [
   }),
   film({
     id: "f-gulliver",
+    poster: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Gullivers_travel_poster_3.jpg",
     archiveId: "GulliversTravels720p_652",
     file: "GulliversTravels.mp4",
     title: "Gulliver's Travels",
@@ -75,6 +82,7 @@ export const FREE_FILMS = [
   }),
   film({
     id: "f-atm",
+    poster: "https://upload.wikimedia.org/wikipedia/en/7/7a/The-amazing-transparent-man-movie-poster-md.jpg",
     archiveId: "TheAmazingTransparentMan1960",
     file: "the-amazing-transparent-man.mp4",
     title: "The Amazing Transparent Man",
@@ -85,6 +93,7 @@ export const FREE_FILMS = [
   }),
   film({
     id: "f-drh",
+    poster: "https://upload.wikimedia.org/wikipedia/en/7/7b/Da-uomo-a-uomo-italian-movie-poster-md.jpg",
     archiveId: "DeathRidesAHorse",
     file: "DeathRidesAHorse1967.mp4",
     title: "Death Rides a Horse",

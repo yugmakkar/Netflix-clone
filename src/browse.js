@@ -134,7 +134,11 @@ async function route() {
 }
 
 function firstHeroCandidate(resolved) {
-  const row = resolved.find((r) => r && r.items && r.items.some((i) => i.backdrop || i.poster));
+  // Skip personalized rows — their slimmed items have no overview for the hero.
+  const skip = /Continue Watching|My List/;
+  const row = resolved.find(
+    (r) => r && !skip.test(r.title) && r.items && r.items.some((i) => i.backdrop || i.poster)
+  );
   if (!row) return null;
   return row.items.find((i) => i.backdrop) || row.items[0];
 }

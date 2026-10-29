@@ -19,7 +19,7 @@
 
     <!-- form -->
     <div class="md-large0:mx-auto">
-        <form action="#" id="form" class="p-5 -mt-4 sm:p-8 md-large0:bg-black md-large0:rounded-sm md-large0:bg-opacity-70 md-large0:pb-[115px] md-large0:w-[450px] md-large0:px-16" onsubmit="return validation()">
+        <form action="#" id="form" novalidate class="p-5 -mt-4 sm:p-8 md-large0:bg-black md-large0:rounded-sm md-large0:bg-opacity-70 md-large0:pb-[115px] md-large0:w-[450px] md-large0:px-16" onsubmit="return validation()">
             <div>
                 <h1 class="font-bold text-white text-4xl tracking-wide md-large0:pt-10">Sign In</h1>
             </div>
@@ -39,7 +39,7 @@
             </div>
     
             <div class="relative mt-5">
-                <input type="password" id="pass" name="pass" value=""  class="bg-neutral-700 py-3 px-3 rounded-md font-poppins w-full peer placeholder-transparent text-white outline-none focus:invalid:border-b-[3px] focus:invalid:border-[#e38400]" autocomplete="off" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$">
+                <input type="password" id="pass" name="pass" value=""  class="bg-neutral-700 py-3 px-3 rounded-md font-poppins w-full peer placeholder-transparent text-white outline-none focus:invalid:border-b-[3px] focus:invalid:border-[#e38400]" autocomplete="off" placeholder="Password">
                 <label for="pass" class="font-poppins absolute left-3 b-sm:left-[20px] text-gray-400 text-sm peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 b-sm:peer-placeholder-shown:top-4 transition-all peer-focus:-top-0 b-sm:peer-focus:-top-0 peer-focus:text-xs peer-focus:text-gray-400 tracking-wide">Password</label>
                 <span class="text-[#e38400] text-sm tracking-wider" id="passField"></span>
             </div>

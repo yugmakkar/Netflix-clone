@@ -6,7 +6,12 @@
 // If no key is present the app still runs: every fetch falls back to the
 // bundled sample data in sampleData.js, so a fresh `git clone` renders.
 
-import { SAMPLE_ROWS, SAMPLE_DETAIL } from "./sampleData.js";
+import {
+  SAMPLE_ROWS,
+  SAMPLE_DETAIL,
+  sampleByGenre,
+  sampleTop10,
+} from "./sampleData.js";
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY || "";
 const BASE = "https://api.themoviedb.org/3";
@@ -65,8 +70,10 @@ export function normalize(item) {
   };
 }
 
-// Genre ids TMDB considers family-safe (Animation, Family, Comedy, Kids).
-export const KID_GENRE_IDS = new Set([16, 10751, 35, 10762, 10770]);
+// Genre ids safe for kids search (Animation, Family, Kids). Comedy (35) is
+// intentionally excluded here: many adult comedies carry it, and genuine kids
+// shows already carry 16/10762, so they still pass.
+export const KID_GENRE_IDS = new Set([16, 10751, 10762]);
 
 const list = (data) =>
   (data.results || [])
@@ -77,14 +84,17 @@ const list = (data) =>
 // Each resolves to { title, items[] }. On any failure (no key, network, rate
 // limit) it returns the matching sample row so the UI never shows a blank.
 
-async function row(title, fetcher, sampleKey) {
+// `sample` is either a key into SAMPLE_ROWS or a function returning items.
+async function row(title, fetcher, sample) {
   try {
     if (!hasKey()) throw new Error("no key");
     const items = await fetcher();
     if (!items.length) throw new Error("empty");
     return { title, items };
   } catch {
-    return { title, items: SAMPLE_ROWS[sampleKey] || [] };
+    const items =
+      typeof sample === "function" ? sample() : SAMPLE_ROWS[sample] || [];
+    return { title, items };
   }
 }
 
@@ -96,7 +106,7 @@ export const rows = {
     row(
       "Top 10 Movies & Shows Today",
       async () => list(await get("/trending/all/day")).slice(0, 10),
-      "trending"
+      sampleTop10
     ),
 
   netflixOriginals: () =>
@@ -142,7 +152,7 @@ export const rows = {
             sort_by: "popularity.desc",
           })
         ),
-      "movies"
+      () => sampleByGenre(id)
     ),
 };
 
