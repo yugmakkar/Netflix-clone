@@ -179,6 +179,11 @@ function renderHero(item) {
 // --- setup banner (no API key) --------------------------------------------
 function setupBanner() {
   if (hasKey()) return;
+  // In demo mode the artwork isn't from TMDB — credit the real sources.
+  const credit = document.getElementById("tmdb-credit");
+  if (credit)
+    credit.textContent =
+      "Demo mode — sample artwork via TVmaze and Wikipedia. Add a TMDB key for live data. Not affiliated with TMDB or Netflix.";
   const el = document.getElementById("setup-banner");
   el.innerHTML = `
     <div class="fixed bottom-4 right-4 z-[70] max-w-xs bg-neutral-900 border border-yellow-600/50 rounded-lg p-4 text-sm shadow-xl">
@@ -199,11 +204,10 @@ function wireSearch() {
     }
     app.innerHTML = `<div class="flex justify-center py-32"><div class="spinner"></div></div>`;
     let results = await tmdbSearch(q);
-    // Kids profiles: keep only titles tagged with a family-safe genre (when
-    // genre data is available; sample data carries none, so it passes through).
+    // Kids profiles: keep only titles tagged with a family-safe genre.
     if (kids)
-      results = results.filter(
-        (r) => !r.genreIds?.length || r.genreIds.some((g) => KID_GENRE_IDS.has(g))
+      results = results.filter((r) =>
+        (r.genreIds || []).some((g) => KID_GENRE_IDS.has(g))
       );
     if (document.getElementById("search-input").value.trim() !== q.trim()) return;
     app.style.paddingTop = "80px";

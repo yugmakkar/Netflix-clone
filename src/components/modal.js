@@ -1,10 +1,10 @@
 // Detail modal: opened from any card. Shows the billboard, Play / My List /
 // trailer actions, metadata, cast, episode picker (TV) and "More Like This".
 
-import { detail, episodes, img } from "../api/tmdb.js";
+import { detail, episodes, img, KID_GENRE_IDS } from "../api/tmdb.js";
 import { freeFilmById } from "../api/freeFilms.js";
 import { esc, watchUrl } from "../util.js";
-import { toggleMyList, inMyList } from "../store.js";
+import { toggleMyList, inMyList, activeProfile } from "../store.js";
 import { cardHtml } from "./card.js";
 
 let backdrop;
@@ -27,6 +27,14 @@ function skeleton() {
 
 function render(d) {
   const inList = inMyList(d);
+
+  // Kids profiles: never surface non-kid-safe titles under "More Like This"
+  // (covers both the demo fallback and live TMDB /similar).
+  if (activeProfile()?.kids && d.similar) {
+    d.similar = d.similar.filter((i) =>
+      (i.genreIds || []).some((g) => KID_GENRE_IDS.has(g))
+    );
+  }
   const bg = d.backdrop
     ? d.backdrop.startsWith("http")
       ? d.backdrop

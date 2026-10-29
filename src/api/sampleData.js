@@ -72,9 +72,16 @@ export const SAMPLE_ROWS = {
 const ALL = () => Object.values(SAMPLE_ROWS).flat();
 
 // Items matching a TMDB genre id (used for offline genre rows). Returns [] when
-// fewer than 3 match so the row is skipped instead of looking sparse.
+// fewer than 3 match so the row is skipped instead of looking sparse. Kids
+// titles are only included for kid genres (Animation/Family/Kids), so e.g. the
+// Comedies row doesn't mix SpongeBob with Parasite.
+const KID_GENRES = new Set([16, 10751, 10762]);
 export function sampleByGenre(id) {
-  const matches = ALL().filter((i) => (i.genreIds || []).includes(Number(id)));
+  const gid = Number(id);
+  const pool = KID_GENRES.has(gid)
+    ? ALL()
+    : ALL().filter((i) => !SAMPLE_ROWS.kids.includes(i));
+  const matches = pool.filter((i) => (i.genreIds || []).includes(gid));
   return matches.length >= 3 ? matches : [];
 }
 
