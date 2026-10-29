@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@900&family=Poppins:wght@200;300;400;500;800;900&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.load{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    opacity: 1;
+    background-color: #000000;
+    animation: AnimateBg 10s linear infinite;
+    transition:  all 0.5s ease-in-out;
+}
+
+@keyframes animateScale{
+    0%{
+        transform: scale(1);
+    }
+
+    100%{
+        transform: scale(0); 
+    }
+}
+
+@keyframes AnimateBg{
+    0%{
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
+
+
+
+.load .loader{
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.load .loader span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(calc(18deg * var(--i)));
+}
+
+.load .loader span::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ffffff ;
+    box-shadow: 0 0 10px #9B2335 ,
+                0 0 20px #DFCFBE ,
+                0 0 40px #55B4B0 ,
+                0 0 60px #E15D44 ,
+                0 0 80px #7FCDCD ,
+                0 0 100px #C3447A ;
+    animation: animateScale 2s linear infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+.load-fin{
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}

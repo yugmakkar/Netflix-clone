@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Netflix भारत - टीवी शो और फिल्में ऑनलाइन देखें</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-bg b-lg:h-[700px] h-[540px] xl:h-[700px] bg-cover" id="head">
+
+        <nav class="bg-gradient-to-b from-black px-4 flex justify-between items-center xl:px-36" id="nav">
+            <div class="mt-2">
+                <a href="hindi.html"><img src="./images/homeLogo.png" alt="" class="w-24 b-lg:w-48" id="logo-img"></a>
+            </div>
+            
+            <div class="text-white flex gap-2 pt-2 cursor-pointer" id="whole-container">
+                <div class="select-container -ml-44 sm:-ml-60" id="select-field">
+                    <div class="flex border px-2 gap-3 rounded-md border-zinc-500 py-1 b-lg:mr-2">
+                        <span class="material-symbols-outlined">
+                            language
+                        </span>
+                        <span class="hidden sm:block" id="select-text">हिंदी</span>
+                        <span class="material-symbols-outlined">
+                            arrow_drop_down
+                        </span>
+                    </div>
+                </div>
+                <a href="./formsHindi.html" class="bg-button font-roboto font-medium py-1 px-3 rounded-md">साइन इन करें</a>
+            </div>
+        </nav>
+
+        <dialog open="open" class="modal-container hidden  bg-black bg-opacity-90 sm:-mt-3 rounded-xl mt-20 border-b-2 border-gray-400 border-t-2">
+            <div class="inner-con flex justify-center text-white px-6 py-2 text-xl">
+                <ul class="font-poppins tracking-wide flex flex-col" id="list">
+                    <li class="options flex gap-3">
+                        <span class="material-symbols-outlined">
+                            language
+                        </span>
+                        <a href="index.html" target="_self">English</a>
+                    </li>
+                    <li class="options mt-5 flex gap-3">
+                        <span class="material-symbols-outlined">
+                            language
+                        </span>
+                        <a href="hindi.html" target="_self">हिंदी</a>
+                    </li>
+                </ul>
+            </div>
+        </dialog>
+
+        <section class="header-details flex justify-center items-center flex-col text-white mx-5 mt-4 b-lg:mt-16">
+            <div class="text-center"><h1 class="text-3xl font-roboto b-lg:text-5xl font-bold tracking-wide mt-14 b-sm:mt-24">अनलिमिटेड फ़िल्में, टीवी शो और बहुत कुछ.</h1></div>
+            <div class="text-center"><h2 class="text-lg font-roboto mt-4 b-lg:text-2xl">जहां चाहें देखें. जब चाहें कैंसल करें.</h2></div>
+            <div class="text-center"><h2 class="text-lg font-roboto mt-6 px-8">देखने के लिए तैयार हैं? अपनी मेंबरशिप बनाने या रीस्टार्ट करने के लिए अपना ईमेल एड्रेस डालें.</h2></div>
+            <div class="text-center">
+                <form action="" class="mt-6 flex flex-col b-sm:flex-row b-sm:gap-9 sm:gap-10">
+                    <div class="relative">
+                        <input type="email" id="email" name="email" value=""  class="bg-black bg-opacity-70 py-3 w-72 px-3 border border-gray-700 rounded-md font-roboto outline-1 outline-gray-200 b-sm:h-14 b-sm:px-3 b-sm:ml-12 peer placeholder-transparent" placeholder="ईमेल एड्रेस" required>
+                        <label for="email" class="font-roboto absolute left-4 b-sm:left-[60px] text-gray-400 font-medium text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 b-sm:peer-placeholder-shown:top-4 transition-all peer-focus:-top-0 b-sm:peer-focus:-top-0 peer-focus:text-sm peer-focus:text-gray-400">ईमेल एड्रेस</label>
+                    </div>
+                    <div class="bg-button mx-14 mt-4 rounded-md flex justify-center items-center py-3  b-sm:-mt-0 b-sm:px-5 b-sm:-ml-8 cursor-pointer">
+                        <button class="bg-button rounded-md text-lg tracking-wide font-medium font-roboto sm:text-2xl sm:font-bold">शुरू करें
+                        </button>
+                        <span class="material-symbols-outlined">
+                            arrow_forward_ios
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </header>
+    <div class="h-[8px] bg-[#242323]"></div>
+
+    <!-- first section -->
+    <section class="bg-black b-lg:py-3 text-white px-5 b-lg:px-0 grid grid-cols-1 b-lg:grid-cols-2 xl:px-40 xl:py-20 2xl:py-1">
+        <div class="b-lg:flex b-lg:flex-col">
+            <div class="text-center"><h1 class="text-3xl font-roboto font-extrabold tracking-wide mt-14 b-sm:mt-24 after-lg:mt-40 b-lg:text-5xl b-lg:text-left px-8 xl:mt-32 2xl:mt-52 b-lg:leading-snug">अपनी टीवी पर मज़ा लें.</h1></div>
+            <div class="text-center"><h2 class="text-lg font-roboto mt-4 px-8 b-lg:text-2xl b-lg:text-left">स्मार्ट टीवी, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray प्लेयर के साथ ही दूसरे डिवाइस पर भी देखें.</h2></div>
+        </div>
+        <div class="mt-12 mb-12">
+            <img src="./images/tv.png" alt="" class="sm:px-20 b-lg:px-2">
+        </div>
+    </section>
+    <div class="h-[8px] bg-[#242323]"></div>
+
+    <!-- second section -->
+    <section class="bg-black text-white px-5 b-lg:py-9 flex flex-col b-lg:flex-row b-lg:px-0 xl:px-44 xl:py-20 2xl:py-1">
+        <div class="b-lg:flex b-lg:flex-col">
+            <div class="text-center"><h1 class="text-3xl font-roboto font-extrabold tracking-wide mt-14 b-sm:mt-20 b-lg:text-5xl b-lg:text-left px-8 after-lg:mt-[100px] xl:mt-[90px] 2xl:mt-[130px] b-lg:leading-snug">ऑफ़लाइन देखने के लिए अपने शो डाउनलोड करें.</h1></div>
+            <div class="text-center"><h2 class="text-lg font-roboto mt-4 px-8 b-lg:text-2xl b-lg:text-left">अपने पसंदीदा शो और फ़िल्में सेव करें, ताकि आप कभी भी इन्हें देख सकें.</h2></div>
+        </div>
+        <div class="mt-6 mb-12 b-lg:order-first md-large:mx-10 md-large1:mx-16">
+            <img src="./images/mobileHindi.png" alt="" class="sm:px-20 b-lg:px-2 b-lg:mt-2">
+        </div>
+    </section>
+    <div class="h-[8px] bg-[#242323]"></div>
+
+    <!-- third section -->
+    <section class="bg-black b-lg:py-3 text-white px-5 b-lg:px-0 grid grid-cols-1 b-lg:grid-cols-2 xl:px-44 xl:py-20 2xl:py-1">
+        <div class="b-lg:flex b-lg:flex-col">
+            <div class="text-center"><h1 class="text-3xl font-roboto font-extrabold tracking-wide mt-14 b-sm:mt-20 b-lg:text-5xl b-lg:text-left px-8 b-lg:mt-24 after-lg:mt-28 2xl:mt-44 b-lg:leading-snug">हर जगह देखें.</h1></div>
+            <div class="text-center"><h2 class="text-lg font-roboto mt-4 px-8 b-lg:text-2xl b-lg:text-left">बिना ज़्यादा पेमेंट किए, अपने फ़ोन, टैबलेट, लैपटॉप और टीवी पर अनलिमिटेड फ़िल्में और टीवी शो स्ट्रीम करें.</h2></div>
+        </div>
+        <div class="mt-6 mb-12">
+            <img src="./images/monitor.png" alt="" class="sm:px-20 b-lg:px-2">
+        </div>
+    </section>
+    <div class="h-[8px] bg-[#242323]"></div>
+
+    <!-- fourth section -->
+    <section class="bg-black text-white px-5 b-lg:py-9 flex flex-col b-lg:flex-row xl:px-40 xl:py-20 2xl:py-1">
+        <div class="b-lg:flex b-lg:flex-col">
+            <div class="text-center"><h1 class="text-center"><h1 class="text-3xl font-roboto font-extrabold tracking-wide mt-14 b-sm:mt-20 b-lg:text-5xl b-lg:text-left px-8 after-lg:mt-[110px] b-lg:leading-snug">बच्चों के लिए प्रोफ़ाइल बनाएं.</h1></div>
+            <div class="text-center"><h2 class="text-lg font-roboto mt-4 px-8 b-lg:text-2xl b-lg:text-left">बच्चों को जाने दें अपने पसंदीदा किरदारों के साथ उस रोमांचक सफ़र पर जो सिर्फ़ उनके लिए ही है - आपकी मेंबरशिप के साथ फ़्री.</h2></div>
+        </div>
+        <div class="mt-6 mb-12 b-lg1:order-first">
+            <img src="./images/childrensHindi.png" alt="" class="sm:px-20 b-lg:px-2 b-lg:w-[1000px]">
+        </div>
+    </section>
+    <div class="h-[8px] bg-[#242323]"></div>
+
+    <!-- Questions -->
+    <section class="bg-black text-white px-5">
+        <div>
+            <div class="text-center"><h1 class="text-3xl font-roboto font-bold tracking-wide pt-14 b-sm:pt-24 b-lg:font-extrabold b-lg:text-5xl">अक्सर पूछे जाने वाले सवाल</h1></div>
+        </div>
+
+        <div class="outer-container mt-10 xl:mx-32 cursor-pointer 2xl:mx-36">
+            <div class="accordion bg-[#242323] mt-2">
+                <div class="flex justify-between items-center text-lg font-roboto tracking-wide p-5 hover:bg-[#333131] sm-big1:text-2xl">
+                    <h2>Netflix क्या है?</h2>
+                    <div class="mt-2 sign">
+                        <span class="material-symbols-outlined add sm-big1:text-4xl">
+                            add
+                        </span>
+                        <span class="material-symbols-outlined close sm-big1:text-4xl">
+                            close
+                        </span>
+                    </div>
+                </div>
+                <div class="bg-black h-[2px] w-full hidden line"></div>
+                <div class="details bg-[#242323] font-roboto text-lg tracking-wide hidden p-5 sm-big1:text-2xl">
+                    <h2>
+                        Netflix एक स्ट्रीमिंग सर्विस है जिसके ज़रिए आप हज़ारों इंटरनेट-कनेक्टेड डिवाइस पर तरह-तरह के अवॉर्ड विजेता टीवी शो, फ़िल्में, ऐनिमे, डॉक्यूमेंट्रीज़ का लुत्फ़ उठा सकते हैं.
+                    </h2>
+                    <h2 class="mt-5">
+                        आप जब चाहें, जितना चाहें, बिना किसी विज्ञापन के देख सकते हैं – सारा कॉन्टेंट बहुत कम मासिक शुल्क पर. खोजने के लिए हमेशा कुछ नया होता है और हर हफ़्ते नए टीवी शो और फ़िल्में जोड़ी जाती हैं!
+                    </h2>
+                </div>
+            </div>
+
+            <div class="accordion bg-[#242323] mt-2">
+                <div class="flex justify-between items-center text-lg font-roboto tracking-wide hover:bg-[#333131] p-5 sm-big1:text-2xl">
+                    <h2>Netflix की कीमत कितनी है?</h2>
+                    <div class="mt-2">
+                        <span class="material-symbols-outlined add sm-big1:text-4xl">
+                            add
+                        </span>
+                        <span class="material-symbols-outlined hidden close sm-big1:text-4xl">
+                            close
+                        </span>
+                    </div>
+                </div>
+                <div class="bg-black h-[2px] w-full hidden line"></div>
+                <div class="details bg-[#242323] font-roboto text-lg tracking-wide hidden p-5 sm-big1:text-2xl">
+                    <h2>
+                        हर महीने की तय फ़ी देकर अपने स्मार्टफ़ोन, टैबलेट, स्मार्ट टीवी, लैपटॉप, या स्ट्रीमिंग डिवाइस पर Netflix देखें. हर महीने ₹149 से ₹649 तक के प्लान. कोई एक्सट्रा कीमत या कॉन्ट्रैक्ट नहीं.
+                    </h2>
+                </div>
+            </div>
+
+            <div class="accordion bg-[#242323] mt-2">
+                <div class="flex justify-between items-center text-lg font-roboto tracking-wide hover:bg-[#333131] p-5 sm-big1:text-2xl">
+                    <h2>मैं कहां देख सकता हूं?</h2>
+                    <div class="mt-2">
+                        <span class="material-symbols-outlined add sm-big1:text-4xl">
+                            add
+                        </span>
+                        <span class="material-symbols-outlined hidden close sm-big1:text-4xl">
+                            close
+                        </span>
+                    </div>
+                </div>
+                <div class="bg-black h-[2px] w-full hidden line"></div>
+                <div class="details bg-[#242323] font-roboto text-lg tracking-wide hidden p-5 sm-big1:text-2xl">
+                    <h2>
+                        कहीं भी, कभी भी देखें अपने पर्सनल कंप्यूटर से या स्मार्ट टीवी, स्मार्टफ़ोन, टैबलेट, स्ट्रीमिंग मीडिया प्लेयर और गेम कंसोल सहित Netflix ऐप ऑफ़र करने वाले किसी भी इंटरनेट-कनेक्टेड डिवाइस पर तुरंत देखने के लिए, वेब पर netflix.com पर अपने Netflix अकाउंट में साइन इन करें.
+                    </h2>
+                    <h2 class="mt-5">
+                        आप iOS, Android या Windows 10 ऐप से भी अपने पसंदीदा शो डाउनलोड कर सकते हैं. चलते-फिरते और बिना इंटरनेट कनेक्शन के देखने के लिए डाउनलोड का उपयोग करें. Netflix को अपने साथ कहीं भी ले जाएं.
+                    </h2>
+                </div>
+            </div>
+
+            <div class="accordion bg-[#242323] mt-2">
+                <div class="flex justify-between items-center text-lg font-roboto tracking-wide hover:bg-[#333131] p-5 sm-big1:text-2xl">
+                    <h2>मैं कैसे कैंसल करूं?</h2>
+                    <div class="mt-2">
+                        <span class="material-symbols-outlined add sm-big1:text-4xl">
+                            add
+                        </span>
+                        <span class="material-symbols-outlined hidden close sm-big1:text-4xl">
+                            close
+                        </span>
+                    </div>
+                </div>
+                <div class="bg-black h-[2px] w-full hidden line"></div>
+                <div class="details bg-[#242323] font-roboto text-lg tracking-wide hidden p-5 sm-big1:text-2xl">
+                    <h2>
+                        Netflix लचीला है. कोई परेशान करने वाले कॉन्ट्रैक्ट नहीं और कोई बंधन नहीं हैं. आप आसानी से दो क्लिक में अपना अकाउंट ऑनलाइन कैंसल कर सकते हैं. कोई कैंसलेशन फ़ीस नहीं है – अपना अकाउंट कभी भी शुरू या बंद करें.
+                    </h2>
+                </div>
+            </div>
+
+            <div class="accordion bg-[#242323] mt-2">
+                <div class="flex justify-between items-center text-lg font-roboto tracking-wide hover:bg-[#333131] p-5 sm-big1:text-2xl">
+                    <h2>मैं Netflix पर क्या देख सकता/सकती हूं?</h2>
+                    <div class="mt-2">
+                        <span class="material-symbols-outlined add sm-big1:text-4xl">
+                            add
+                        </span>
+                        <span class="material-symbols-outlined hidden close sm-big1:text-4xl">
+                            close
+                        </span>
+                    </div>
+                </div>
+                <div class="bg-black h-[2px] w-full hidden line"></div>
+                <div class="details bg-[#242323] font-roboto text-lg tracking-wide hidden p-5 sm-big1:text-2xl">
+                    <h2>
+                        Netflix की बहुत बड़ी लाइब्रेरी में फ़ीचर फ़िल्मों, डॉक्यूमेंट्री, टीवी शो, ऐनिमे, अवॉर्ड-विनिंग Netflix ओरिजिनल्स के अलावा और भी बहुत कुछ है. आप जितना चाहें, कभी भी देखें.
+                    </h2>
+                </div>
+            </div>
+
+            <div class="accordion bg-[#242323] mt-2">
+                <div class="flex justify-between items-center text-lg font-roboto tracking-wide hover:bg-[#333131] p-5 sm-big1:text-2xl">
+                    <h2>क्या Netflix बच्चों के लिए ठीक है?</h2>
+                    <div class="mt-2">
+                        <span class="material-symbols-outlined add sm-big1:text-4xl">
+                            add
+                        </span>
+                        <span class="material-symbols-outlined hidden close sm-big1:text-4xl">
+                            close
+                        </span>
+                    </div>
+                </div>
+                <div class="bg-black h-[2px] w-full hidden line"></div>
+                <div class="details bg-[#242323] font-roboto text-lg tracking-wide hidden p-5 sm-big1:text-2xl">
+                    <h2>
+                        आपकी मेंबरशिप में Netflix किड्स एक्सपीरियंस शामिल है. बच्चे अपनी तरह से पारिवारिक टीवी शो और फ़िल्मों का आनंद लेते हैं, लेकिन आप उनके द्वारा देखे जाने वाले कॉन्टेंट को कंट्रोल कर सकते हैं.
+                    </h2>
+                    <h2 class="mt-5">
+                        बच्चों की प्रोफ़ाइल में PIN से सुरक्षित पैरेंटल कंट्रोल्स होते हैं जिससे आप बच्चों को मेच्योरिटी रेटिंग वाले कॉन्टेंट देखने से रोक सकते हैं और उन टाइटल को ब्लॉक कर सकते हैं जिन्हें आप नहीं चाहते हैं कि बच्चे देखें.
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-14"><h2 class="text-lg font-roboto mt-6 px-8">देखने के लिए तैयार हैं? अपनी मेंबरशिप बनाने या रीस्टार्ट करने के लिए अपना ईमेल एड्रेस डालें.</h2></div>
+            <div class="text-center">
+                <form action="" class="mt-6 flex flex-col b-sm:flex-row justify-center items-center b-sm:gap-9 sm:gap-10 pb-14">
+                    <div class="relative">
+                        <input type="email" id="email" name="email" value=""  class="bg-black bg-opacity-70 py-3 w-72 px-3 border border-gray-700 rounded-md font-roboto outline-1 outline-gray-200 b-sm:h-14 b-sm:px-3 b-sm:ml-12 peer placeholder-transparent" placeholder="ईमेल एड्रेस" required>
+                        <label for="email" class="font-roboto absolute left-4 b-sm:left-[60px] text-gray-400 font-medium text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 b-sm:peer-placeholder-shown:top-4 transition-all peer-focus:-top-0 b-sm:peer-focus:-top-0 peer-focus:text-sm peer-focus:text-gray-400">ईमेल एड्रेस</label>
+                    </div>
+                    <div class="bg-button mx-14 mt-4 rounded-md flex justify-center items-center py-3  b-sm:-mt-0 b-sm:px-5 b-sm:-ml-8 cursor-pointer px-5">
+                        <button class="bg-button rounded-md text-lg tracking-wide font-medium font-roboto sm:text-2xl sm:font-bold">शुरू करें
+                        </button>
+                        <span class="material-symbols-outlined">
+                            arrow_forward_ios
+                        </span>
+                    </div>
+                </form>
+            </div>
+    </section>
+    <div class="h-[8px] bg-[#242323]"></div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white px-6 font-roboto tracking-wide xl:px-52 xl:py-10">
+        <div class="pt-6">
+            <h1>कोई सवाल है? <span class="underline tracking-wider font-sans">000-800-919-1694</span> पर कॉल करें</h1>
+        </div>
+
+        <div class="grid grid-cols-1 sm-small:grid-cols-2 sm-big:grid-cols-3 py-8 underline text-sm font-light">
+            <div>
+                <ul>
+                    <li class="pt-4"><a class="py-2">FAQ</a></li>
+                    <li class="pt-4"><a class="py-2">गिफ़्ट कार्ड शर्तें</a></li>
+                    <li class="pt-4"><a class="py-2">सहायता केंद्र</a></li>
+                    <li class="pt-4"><a class="py-2">अकाउंट</a></li>
+                    <li class="pt-4"><a class="py-2">मीडिया केंद्र</a></li>
+                    <li class="pt-4"><a class="py-2">इंवेस्टर संबंध</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li class="pt-4"><a class="py-2">नौकरियां</a></li>
+                    <li class="pt-4"><a class="py-2">देखने के तरीके</a></li>
+                    <li class="pt-4"><a class="py-2">उपयोग की शर्तें</a></li>
+                    <li class="pt-4"><a class="py-2">प्रायवेसी</a></li>
+                    <li class="pt-4"><a class="py-2">कुकी प्रेफ़रेंस</a></li>
+                    <li class="pt-4 hidden sm-small:block sm-big:hidden"><a class="py-2">स्पीड टेस्ट</a></li>
+                    <li class="pt-4 hidden sm-small:block sm-big:hidden"><a class="py-2">कानूनी सूचनाएं</a></li>
+                    <li class="pt-4 hidden sm-small:block sm-big:hidden"><a class="py-2">सिर्फ़ Netflix पर</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul class="sm-small:-mt-[70px] sm-big:-mt-[2px] sm:mt-4">
+                    <li class="pt-4 sm:sm-small:pt-0"><a class="py-2">कॉरपोरेट जानकारी</a></li>
+                    <li class="pt-4"><a class="py-2">हमसे संपर्क करें</a></li>
+                    <li class="pt-4 sm-small:hidden sm-big:block"><a class="py-2">स्पीड टेस्ट</a></li>
+                    <li class="pt-4 sm-small:hidden sm-big:block"><a class="py-2">कानूनी सूचनाएं</a></li>
+                    <li class="pt-4 sm-small:hidden sm-big:block"><a class="py-2">सिर्फ़ Netflix पर</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-2 p-3 border border-gray-700 w-32 flex gap-2 text-sm">
+            <span class="material-symbols-outlined text-xl">
+                language
+            </span>
+            <select name="lang" id="lang" class="bg-black outline-none" onchange="location = this.value;">
+                <option value="index.html">English</option>
+                <option value="hindi.html" selected>हिंदी</option>
+            </select>
+        </div>
+
+        <div class="font-roboto text-sm font-extralight mt-6 pb-8">
+            Netflix भारत
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
