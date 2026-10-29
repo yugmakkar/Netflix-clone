@@ -61,8 +61,12 @@ export function normalize(item) {
     backdrop: item.backdrop_path,
     rating: item.vote_average ? Math.round(item.vote_average * 10) : null,
     year: (item.release_date || item.first_air_date || "").slice(0, 4),
+    genreIds: item.genre_ids || [],
   };
 }
+
+// Genre ids TMDB considers family-safe (Animation, Family, Comedy, Kids).
+export const KID_GENRE_IDS = new Set([16, 10751, 35, 10762, 10770]);
 
 const list = (data) =>
   (data.results || [])
@@ -88,13 +92,10 @@ export const rows = {
   trending: () =>
     row("Trending Now", async () => list(await get("/trending/all/week")), "trending"),
 
-  top10India: () =>
+  top10Today: () =>
     row(
-      "Top 10 in India Today",
-      async () =>
-        list(
-          await get("/trending/all/day", { region: "IN" })
-        ).slice(0, 10),
+      "Top 10 Movies & Shows Today",
+      async () => list(await get("/trending/all/day")).slice(0, 10),
       "trending"
     ),
 
@@ -164,7 +165,21 @@ export async function detail(type, id) {
       trailerKey: trailer?.key || null,
     };
   } catch {
-    return SAMPLE_DETAIL;
+    // Demo/offline: show the actual clicked title (not a fixed placeholder).
+    const found = Object.values(SAMPLE_ROWS)
+      .flat()
+      .find((i) => String(i.id) === String(id) && i.type === type);
+    if (!found) return SAMPLE_DETAIL;
+    return {
+      ...SAMPLE_DETAIL,
+      ...found,
+      genres: SAMPLE_DETAIL.genres,
+      runtime: null,
+      seasons: [],
+      cast: [],
+      similar: Object.values(SAMPLE_ROWS).flat().filter((i) => i.id !== found.id).slice(0, 8),
+      trailerKey: null,
+    };
   }
 }
 

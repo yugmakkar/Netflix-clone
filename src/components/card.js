@@ -9,22 +9,26 @@ import { progressFor } from "../store.js";
 // A single card's HTML. `rank` (1-10) renders the big Top-10 numeral.
 export function cardHtml(item, { rank } = {}) {
   const pct = progressFor(item);
+  // On a broken image, swap in a title tile. Use this.alt (not an inlined
+  // title) so titles containing quotes/HTML can't break the handler.
   const art = item.poster
     ? `<img src="${posterSrc(item)}" alt="${esc(item.title)}" loading="lazy"
-         onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'tile',textContent:'${esc(
-           item.title
-         )}'}))">`
+         onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'tile',textContent:this.alt}))">`
     : `<div class="tile">${esc(item.title)}</div>`;
 
-  return `
+  const card = `
     <div class="card" data-id="${item.id}" data-type="${esc(item.type)}"${
     item.free ? ' data-free="1"' : ""
   }${item.archiveId ? ` data-archive="${esc(item.archiveId)}"` : ""}>
-      ${rank ? `<span class="rank">${rank}</span>` : ""}
       ${item.free ? `<span class="badge">FREE</span>` : ""}
       ${art}
       ${pct ? `<div class="progress" style="width:${pct}%"></div>` : ""}
     </div>`;
+
+  // The rank numeral sits OUTSIDE the card, which clips its own overflow.
+  return rank
+    ? `<div class="top10-item"><span class="rank">${rank}</span>${card}</div>`
+    : card;
 }
 
 function posterSrc(item) {

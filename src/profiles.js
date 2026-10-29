@@ -3,6 +3,7 @@
 // satisfies browser autoplay policies) before entering the browse app.
 
 import "./app.css";
+import introSound from "../images/Netflix-Intro-Sound-Effect.mp3";
 import {
   profiles,
   addProfile,
@@ -108,7 +109,7 @@ function showAddForm() {
 function enter(id) {
   setActiveProfile(id);
   // Play the intro sting, then go to browse. Resolve even if audio is blocked.
-  const audio = new Audio("/images/Netflix-Intro-Sound-Effect.mp3");
+  const audio = new Audio(introSound);
   audio.volume = 0.6;
   const go = () => location.assign("browse.html");
   audio.addEventListener("ended", go, { once: true });

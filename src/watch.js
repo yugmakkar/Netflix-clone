@@ -4,7 +4,7 @@
 // Both feed Continue Watching through store.saveProgress().
 
 import "./app.css";
-import { detail } from "./api/tmdb.js";
+import { detail, hasKey } from "./api/tmdb.js";
 import { freeFilmById } from "./api/freeFilms.js";
 import { saveProgress, continueRow, isSignedIn, activeProfile } from "./store.js";
 import { esc } from "./util.js";
@@ -190,7 +190,14 @@ async function playTrailer() {
   wireBack();
 
   const d = await detail(type, id);
-  if (!d.trailerKey) return fail(d.title, "No trailer is available for this title.", d);
+  if (!d.trailerKey)
+    return fail(
+      d.title,
+      hasKey()
+        ? "No trailer is available for this title."
+        : "Demo mode — add a TMDB API key (see README) to play trailers.",
+      d
+    );
 
   root.innerHTML = `
     ${backBar}

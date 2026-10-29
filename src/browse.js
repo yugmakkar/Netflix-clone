@@ -3,7 +3,7 @@
 // a hero billboard. Guards the route: no session/profile => redirect.
 
 import "./app.css";
-import { rows, search as tmdbSearch, hasKey, img } from "./api/tmdb.js";
+import { rows, search as tmdbSearch, hasKey, img, KID_GENRE_IDS } from "./api/tmdb.js";
 import { freeFilmsRow } from "./api/freeFilms.js";
 import { renderNav } from "./components/nav.js";
 import { renderRow, wireCardClicks } from "./components/card.js";
@@ -40,7 +40,7 @@ const ROW_SETS = {
   home: () => [
     continueRowDef(),
     rows.trending(),
-    rows.top10India(),
+    rows.top10Today(),
     rows.netflixOriginals(),
     Promise.resolve(freeFilmsRow()),
     rows.hindi(),
@@ -64,7 +64,7 @@ const ROW_SETS = {
     rows.genre("Romance", "10749"),
     rows.genre("Animation", "16"),
   ],
-  new: () => [rows.trending(), rows.top10India(), rows.trendingMovies(), rows.trendingTV()],
+  new: () => [rows.trending(), rows.top10Today(), rows.trendingMovies(), rows.trendingTV()],
   mylist: () => [myListRowDef(true)],
 };
 
@@ -72,7 +72,7 @@ const KIDS_ROWS = () => [
   rows.genre("Animation", "16"),
   rows.genre("Family", "10751"),
   rows.genre("Kids TV", "10762", "tv"),
-  Promise.resolve(freeFilmsRow()),
+  Promise.resolve(freeFilmsRow({ kids: true })),
 ];
 
 function continueRowDef() {
@@ -190,7 +190,13 @@ function wireSearch() {
       return;
     }
     app.innerHTML = `<div class="flex justify-center py-32"><div class="spinner"></div></div>`;
-    const results = (await tmdbSearch(q)).filter((r) => (kids ? true : true));
+    let results = await tmdbSearch(q);
+    // Kids profiles: keep only titles tagged with a family-safe genre (when
+    // genre data is available; sample data carries none, so it passes through).
+    if (kids)
+      results = results.filter(
+        (r) => !r.genreIds?.length || r.genreIds.some((g) => KID_GENRE_IDS.has(g))
+      );
     if (document.getElementById("search-input").value.trim() !== q.trim()) return;
     app.style.paddingTop = "80px";
     app.innerHTML = "";

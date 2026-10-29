@@ -163,21 +163,26 @@ body.app {
   background: var(--nf-red);
 }
 
-/* Top-10 giant numerals */
-.top10 .card {
-  margin-left: 3.2rem;
+/* Top-10 giant numerals — rank sits beside the card (card clips its own box) */
+.top10-item {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 3.2rem;
 }
-.top10 .rank {
+.top10-item .rank {
   position: absolute;
-  left: -3.4rem;
+  left: -0.2rem;
   bottom: -0.6rem;
   font-family: "Roboto", sans-serif;
   font-weight: 900;
   font-size: 7rem;
   line-height: 1;
   color: #000;
-  -webkit-text-stroke: 3px #555;
+  -webkit-text-stroke: 3px #666;
   z-index: 1;
+  pointer-events: none;
 }
 
 /* ---- Detail modal ------------------------------------------------------- */

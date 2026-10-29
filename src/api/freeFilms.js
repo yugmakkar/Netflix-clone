@@ -99,6 +99,10 @@ export function freeFilmById(id) {
   return FREE_FILMS.find((f) => f.id === id) || null;
 }
 
-export function freeFilmsRow() {
-  return { title: "Free Full Movies · Public Domain", items: FREE_FILMS };
+// Genres considered safe for kids profiles.
+const KID_SAFE = new Set(["Animation", "Comedy"]);
+
+export function freeFilmsRow({ kids = false } = {}) {
+  const items = kids ? FREE_FILMS.filter((f) => KID_SAFE.has(f.genre)) : FREE_FILMS;
+  return { title: "Free Full Movies · Public Domain", items };
 }
