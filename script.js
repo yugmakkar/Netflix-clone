@@ -14,6 +14,18 @@ selectField.addEventListener('click', () => {
     modal.classList.toggle('hidden');
 })
 
+// "Get Started" (and the email box) carry the typed email into the sign-up
+// flow, prefilling forms.html instead of jumping to the real netflix.com.
+document.querySelectorAll('.get-started-form').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = form.querySelector('.signup-email')?.value.trim() || '';
+        const target = form.getAttribute('action') || 'forms.html';
+        const qs = email ? `?email=${encodeURIComponent(email)}` : '';
+        window.location.assign(`${target}${qs}`);
+    });
+});
+
 for(let i = 0; i < accordion.length; i++){
     closee[i].classList.add('hidden');
     accordion[i].addEventListener('click', () => {

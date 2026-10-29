@@ -1,19 +1,31 @@
 {
-    "name": "project4",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "vite",
-        "build": "vite build"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "autoprefixer": "^10.4.14",
-        "postcss": "^8.4.21",
-        "tailwindcss": "^3.2.7",
-        "vite": "^4.1.4"
-    }
+  "name": "netflix-clone",
+  "version": "2.0.0",
+  "description": "A Netflix clone: faithful marketing landing page plus a full browse/streaming experience powered by TMDB, YouTube trailers, and public-domain films.",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "netflix",
+    "clone",
+    "tmdb",
+    "vite",
+    "tailwindcss",
+    "streaming"
+  ],
+  "author": "Yug",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7",
+    "vite": "^4.1.4"
+  }
 }
